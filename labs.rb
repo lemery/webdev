@@ -15,7 +15,8 @@ get '/todo' do
   todoList = JSON.parse(lis)
   # Make the array an object
   @list = todoList
-  erb :list
+  # Display through list.erb, replacing layout.erb entirely
+  erb :list, :layout => :list
 end
 
 get '/addtask' do
