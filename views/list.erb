@@ -2,8 +2,8 @@
 <h1>Todo List</h1>
 <ul>
 	<% @list.each do |line| %>
-		<li><b>Task:</b> <%= line["Name"] %><br>
-			<b>Due:</b> <%= line["Date"] %></li>
+		<li><b>Task:</b> <%= line[:description] %><br>
+			<b>Due:</b> <%= line[:due] %></li>
 	<% end %>
 </ul>
 <p align="left"><a href="/addtask">Add a Task</todo></p align>
