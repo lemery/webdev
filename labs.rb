@@ -35,7 +35,18 @@ post '/addtask' do
   if (date == "")
     date = "Indefinite"
   end
-  Task.create(description: "#{params[:task]}", due: "#{params[:date]}")
+  Task.create(description: "#{params[:task]}", due: date)
   # Bounces the user back to the original addtask window, rather than leaving a blank page
   redirect to('/addtask')  
+end
+
+get '/removetask' do
+  @list = Task.all
+  erb :removetask
+end
+
+post '/removetask' do
+  toDestroy = Task.find_by(description: "#{params[:task_name]}", due: "#{params[:due_date]}")
+  toDestroy.destroy
+  redirect to('/removetask')
 end

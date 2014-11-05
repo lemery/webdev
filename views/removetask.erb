@@ -1,0 +1,13 @@
+<h1>Input the task you would like to remove</h1>
+<ul>
+	<% @list.order(:due).each do |line| %>
+		<li><b>Task:</b> <%= line[:description] %><b> Due:</b> <%= line[:due] %></li>
+	<% end %>
+</ul>
+
+<form action="/removetask" method="POST">
+  <input type="text" name="task_name" placeholder="Input name of task to delete"/>
+  <input type="text" name="due_date" placeholder="Due date"/>
+  <input type="submit" value="submit button"/>
+</form>
+<p align="left"><a href="/todo">To-Do List</todo></p align>
