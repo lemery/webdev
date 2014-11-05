@@ -1,8 +1,9 @@
 require 'rubygems'
 require 'bundler/setup'
-require './models/Task'
 
 Bundler.require
+
+require './models/Task'
 
 ActiveRecord::Base.establish_connection(
   :adapter => 'sqlite3',
