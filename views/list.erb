@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="liststyle.css" type="text/css" /> 
 <h1>Todo List</h1>
 <ul>
-	<% @list.each do |line| %>
+	<% @list.order(:due).each do |line| %>
 		<li><b>Task:</b> <%= line[:description] %><br>
 			<b>Due:</b> <%= line[:due] %></li>
 	<% end %>
