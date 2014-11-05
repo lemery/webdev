@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'json'
-require 'task'
+require './models/Task'
 
 Bundler.require
 
