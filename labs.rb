@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'json'
+require 'task'
 
 Bundler.require
 
@@ -10,7 +11,7 @@ end
 
 get '/todo' do
   # If the todo file exists
-  if (File.file?("todo.json"))
+  if File.file?("todo.json")
     # Read the todo file
     lis = IO.read("todo.json")
     # Parse it from JSON
@@ -39,7 +40,7 @@ post '/addtask' do
     date = "Indefinite"
   end
   # Parse the existing task list into a ruby object, if one exists
-  if (File.file?("todo.json"))
+  if File.file?("todo.json")
     tasklist = JSON.parse(IO.read("todo.json"))
   else
     tasklist = Array.new
