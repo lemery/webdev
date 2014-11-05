@@ -5,6 +5,12 @@ require 'task'
 
 Bundler.require
 
+ActiveRecord::Base.establish_connection(
+  :adapter => 'sqlite3',
+  :database => 'db/development.db',
+  :encoding => 'utf8'
+)
+
 get '/' do
   erb :index
 end
