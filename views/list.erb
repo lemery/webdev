@@ -1,9 +1,20 @@
-<link rel="stylesheet" href="liststyle.css" type="text/css" /> 
-<h1>Todo List</h1>
-<ul>
-	<% @list.each do |line| %>
-		<li><b>Task:</b> <%= line["Name"] %><br>
-			<b>Due:</b> <%= line["Date"] %></li>
-	<% end %>
-</ul>
-<p align="left"><a href="/addtask">Add a Task</todo></p align>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>To-Do List</title>
+		<link rel="stylesheet" href="liststyle.css" type="text/css" /> 
+		<style>
+
+		</style>
+	</head>
+	<body>
+		<h1>Todo List</h1>
+		<ul>
+			<% @list.each do |line| %>
+				<li><b>Task:</b> <%= line["Name"] %><br>
+					<b>Due:</b> <%= line["Date"] %></li>
+			<% end %>
+		</ul>
+	<p><a href="/addtask">Add a Task</a><br>
+	   <a href="/">Back to Index</a></p>
+</body>

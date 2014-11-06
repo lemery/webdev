@@ -25,7 +25,7 @@ get '/todo' do
     @list = blanklist
   end
   # Display through list.erb, replacing layout.erb entirely
-  erb :list, :layout => :list
+  erb :list
 end
 
 get '/addtask' do
