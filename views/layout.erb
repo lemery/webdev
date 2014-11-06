@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Sinatra Hello World</title>
-  <link rel="stylesheet" href="liststyle.css" type="text/css" /> 
-  <style>
-  body {
-	background-color:#232323;
-	color:#747474;
-	text-align: left;
-	max-width: 1000px;
-	margin: 32px;
-  	font-family: Tahoma, Geneva, sans-serif;
-  }
-  a:link {
-    color: #FF0000;
-	}
-	a:visited {
-    	color: #00FF00;
-	}
-	a:hover {
-    	color: #FF00FF;
-	}
-	a:active {
-    	color: #0000FF;
-	}
-
-  code {
-  	display: inline-block;
-  	font-size: inherit;
-  	font-family: Menlo, Consolas, monaco, monospace;
-  	border: 1px solid #777;
-  	border-radius: 3px;
-  	padding: 0 5px;
-  }
-  </style>
-</head>
-<body>
-	<%= yield %>
-</body>
+	<head>
+		<%= yield_content :page_title %>
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<%= yield_content :extra_stylesheets %>
+		<style>
+			body {
+				background-color: #232323;
+				color: #747474;
+				text-align: left;
+				margin: 32px;
+				font-family: Tahoma, Geneva, sans-serif;
+			}
+			a:link {
+				color: #FFCC00;
+			}	
+			a:visited {
+				color: #FFCC00;
+			}
+			a:hover {
+				color: #FFCC00;
+			}	
+			a:active {
+				color: #FFCC00;
+			}
+			code {
+				display: inline-block;
+				font-size: inherit;
+				font-family: Menlo, Consolas, monaco, monospace;
+				border: 1px solid #777;
+				border-radius: 3px;
+				padding: 0 5px;
+			}
+			<%= yield_content :extra_css %>
+		</style>
+	</head>
+	<body>	
+		<%= yield %>
+		<script src="/js/bootstrap.min.js"></script>
+	</body>
 </html>

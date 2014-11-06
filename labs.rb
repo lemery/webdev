@@ -1,11 +1,13 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'json'
+require 'sinatra'
+require 'sinatra/content_for'
 
 Bundler.require
 
 get '/' do
-  erb :index
+  redirect to('/todo')
 end
 
 get '/todo' do
