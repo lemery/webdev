@@ -1,13 +1,54 @@
-<h1>Input the task you would like to remove</h1>
-<ul>
-	<% @list.order(:due).each do |line| %>
-		<li><b>Task:</b> <%= line[:description] %><b> Due:</b> <%= line[:due] %></li>
-	<% end %>
-</ul>
+<% content_for :page_title do %>
+<title>Remove a Task</title>
+<% end %>
 
-<form action="/removetask" method="POST">
-  <input type="text" name="task_name" placeholder="Input name of task to delete"/>
-  <input type="text" name="due_date" placeholder="Due date"/>
-  <input type="submit" value="submit button"/>
-</form>
-<p align="left"><a href="/todo">To-Do List</todo></p align>
+<% content_for :extra_css do %>
+.col-lg-2 {
+	padding-left: 1px;
+	padding-right: 1px;
+}
+.container {
+	padding-right: 11px
+	padding-left: 11px;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+<% end %>
+
+		<ul class="nav nav-tabs" role="tablist">
+			<li role="presentation"><a href="/todo" role="tab" data-toggle="tab">To-Do List</a></li>
+			<li role="presentation"><a href="/addtask" role="tab" data-toggle="tab">Add a Task</a></li>
+			<li role="presentation" class="active"><a href="/removetask" role="tab" data-toggle="tab">Remove a Task</a></li>	
+		</ul>
+		<br>
+		<table class="table table-hover table-bordered table-condensed" style="width:800px">
+			<tr>
+				<th>#</th>
+				<th>Task</th>
+				<th>Due Date</th>
+			</tr>
+			<% count = 0 %>
+			<% @list.order(:due).each do |line| %>
+			<% count += 1 %>
+			<tr>
+				<td><%= count %></td>
+				<td><%= line.description %></td>
+				<td><%= line.due %></td>
+			</tr>
+			<% end %>
+		</table>
+		<form action="/removetask" method="POST">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2">
+						<div class="input-group">
+							<span class ="input-group-addon"># to Delete</span>
+							<input class='form-control' type='text' name='num' style='width: 50px'/>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<button type='submit' class='btn btn-default'>Remove</button>
+					</div>
+				</div>
+			</div>
+		</form>

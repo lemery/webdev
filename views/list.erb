@@ -15,6 +15,7 @@ table {
 		<ul class ="nav nav-tabs" role="tablist">
 			<li role="presentation" class="active"><a href="/todo" role="tab" data-toggle="tab">To-Do List</a></li>
 			<li role="presentation"><a href="/addtask" role="tab" data-toggle="tab">Add a Task</a></li>
+			<li role="presentation"><a href="/removetask" role="tab" data-toggle="tab">Remove a Task</a></li>
 		</ul>
 		<br>
 		<table class="table table-hover table-bordered" style="width:800px">
@@ -22,13 +23,13 @@ table {
 				<th>Task</th>
 				<th>Due Date</th>
 			</tr>
-			<% @list.each do |line| %>
+			<% @list.order(:due).each do |line| %>
 			<tr>
 				<td>
-					<%= line["Name"] %>
+					<%= line.description %>
 				</td>
 				<td>
-					<%= line["Date"] %>
+					<%= line.due %>
 				</td>
 			</tr>
 			<% end %>

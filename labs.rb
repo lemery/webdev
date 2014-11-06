@@ -23,7 +23,6 @@ end
 
 get '/todo' do
   @list = Task.all
-  # Display through list.erb, replacing layout.erb entirely
   erb :list
 end
 
@@ -48,7 +47,7 @@ get '/removetask' do
 end
 
 post '/removetask' do
-  toDestroy = Task.find_by(description: "#{params[:task_name]}", due: "#{params[:due_date]}")
-  toDestroy.destroy
+  toDestroy = Task.limit(1).order(:due).offset("#{params[:num]}".to_i-1)
+  toDestroy.destroy_all
   redirect to('/removetask')
 end
