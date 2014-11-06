@@ -1,5 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
+require 'sinatra'
+require 'sinatra/content_for'
 
 Bundler.require
 
@@ -16,13 +18,13 @@ else
 end
 
 get '/' do
-  erb :index
+  redirect to('/todo')
 end
 
 get '/todo' do
   @list = Task.all
   # Display through list.erb, replacing layout.erb entirely
-  erb :list, :layout => :list
+  erb :list
 end
 
 get '/addtask' do
