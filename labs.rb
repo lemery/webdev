@@ -155,8 +155,8 @@ post '/:user/addtask' do
   else
     return status(403)
   end
-  # Bounces the user back to the original addtask window, rather than leaving a blank page
-  redirect to("/#{params[:user]}/addtask")  
+  @list = user_tasks(params[:user])
+  erb :addtask
 end
 
 get '/removetask' do
@@ -178,8 +178,9 @@ end
 
 post '/:user/removetask' do
   if (authorized? (params[:user]))
-    Task.limit(1).where(username: params[:user]).order(:due).offset("#{params[:num]}".to_i-1).destroy_all
-    redirect to("/#{params[:user]}/removetask")
+    user_tasks(params[:user]).limit(1).offset("#{params[:num]}".to_i-1).destroy_all
+    @list = user_tasks(params[:user])
+    erb :removetask
   else
     return status(403)
   end
