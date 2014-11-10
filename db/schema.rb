@@ -11,11 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105052131) do
+ActiveRecord::Schema.define(version: 20141106193925) do
 
   create_table "tasks", force: true do |t|
-    t.string "description"
-    t.string "due"
+    t.string  "description"
+    t.string  "due"
+    t.integer "user_id"
+  end
+
+  create_table "users", force: true do |t|
+    t.string  "username"
+    t.string  "password"
+    t.boolean "isAdmin"
   end
 
 end

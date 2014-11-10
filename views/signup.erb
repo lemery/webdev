@@ -1,0 +1,22 @@
+<% content_for :page_title do %>
+<title>Login Page</title>
+<% end %>
+
+<%content_for :extra_css do%>
+body {
+	max-width: 1000px;
+}
+<% end %>
+
+		<form name="signup" action="/auth/signup" method="post" accept-charset="utf-8" style="width: 600px"">
+			<input type="text" class="form-control" name="user_name" placeholder="Username" required>
+			<input type="password" class="form-control" name="user_password" placeholder="Password" required>
+			<input type="password" class="form-control" name="user_password_confirmation" placeholder="Password (Confirmation)" required>
+			 <button class="btn btn-primary btn-block" type="submit"><strong>Log In</strong></button>
+		</form>
+		<% if flash[:username_taken] == "Username already taken" %>
+		<span style="color:red">That username is already taken</span>
+		<% end %>
+		<% if flash[:password_match_fail] == "Passwords did not match" %>
+		<span style="color:red">The passwords did not match</span>
+		<% end %>

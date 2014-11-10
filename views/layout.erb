@@ -19,7 +19,7 @@
 				color: #FFCC00;
 			}
 			a:hover {
-				color: #FFCC00;
+				color: #CCA300;
 			}	
 			a:active {
 				color: #FFCC00;
@@ -32,10 +32,37 @@
 				border-radius: 3px;
 				padding: 0 5px;
 			}
+			.navbar-inverse .navbar-nav > li > a {
+				color: #FFCC00;
+			}
+			.navbar {
+				background-color: #151515;
+  			}
+  			.navbar-nav li a {
+  				line-height: 40px;
+  			}
+  			.navbar-text {
+  				padding-right: 10px;
+  			}
 			<%= yield_content :extra_css %>
 		</style>
 	</head>
 	<body>	
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<% if logged_in? %>
+				<ul class="nav navbar-nav">
+					<li><a href='/<%= username %>/todo'>To-Do List</a></li>
+					<li><a href="/<%= username %>/addtask">Add a Task</a></li>
+					<li><a href="/<%= username %>/removetask">Remove a Task</a></li>
+				</ul>
+					<p class="navbar-text navbar-right">Signed in as <%= username %><br>
+						<a href="/auth/logout">Log Out?</a></p>
+				<% else %>
+					<p class="navbar-text navbar-right"><a href="/auth/login">Log in</a> or <a href="/auth/signup">Register</a></p>
+				<% end %>
+			</div>
+		</nav>
 		<%= yield %>
 		<script src="/js/bootstrap.min.js"></script>
 	</body>

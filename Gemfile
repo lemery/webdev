@@ -7,6 +7,8 @@ gem "sinatra-activerecord", require: 'sinatra/activerecord'
 gem "rake"
 gem "tux"
 gem 'sinatra-contrib'
+gem 'sinatra-flash'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 group :development do
 	gem 'sqlite3', '>= 1.3.9'

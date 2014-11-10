@@ -1,6 +1,7 @@
 <% content_for :page_title do %>
 <title>Add a Task</title>
 <% end %>
+
 <% content_for :extra_css do %>
 .col-lg-6 {
 	padding-right: 1px;
@@ -15,14 +16,7 @@
 	padding-rigt: 1px;
 }
 <% end %>
-
-		<ul class="nav nav-tabs" role="tablist">
-			<li role="presentation"><a href="/todo" role="tab" data-toggle="tab">To-Do List</a></li>
-			<li role="presentation" class="active"><a href="/addtask" role="tab" data-toggle="tab">Add a Task</a></li>
-			<li role="presentation"><a href="/removetask" role="tab" data-toggle="tab">Remove a Task</a></li>	
-		</ul>
-		<br>
-		<form action='/addtask' method='POST'>
+		<form action='/<%= @username %>/addtask' method='POST'>
 			<strong>New Task:</strong> <br><br>
 			<div class="container-fluid">
 				<div class="row">
